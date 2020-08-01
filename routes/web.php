@@ -36,4 +36,5 @@ Route::get("hide","SignController@hide");
 //H5
 Route::post("/log","Admin\LoginController@login");
 Route::post("/reg","Admin\LoginController@register");
+Route::get("/goshop/{goods_id}","Admin\AdminController@goshop");
 
