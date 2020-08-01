@@ -16,7 +16,8 @@ class AdminController extends Controller
             "image"=>$goods->goods_img,
             "quantity"=>1,
             "price"=>$goods->shop_price*0.8,
-            "goods_id"=>$goods->goods_id
+            "goods_id"=>$goods->goods_id,
+            "time" => time()
         ];
         $add = Car::where("goods_id",'=',$goods->goods_id)->first();
         $car = new Car();
@@ -26,7 +27,7 @@ class AdminController extends Controller
                   $shop_price= $goods->shop_price;
                   $quantity = Car::where("goods_id",$goods->goods_id)->sum("quantity");
                   $count = $shop_price*$quantity*0.8;
-                  Car::where("goods_id",$goods_id)->update(["price"=>$count]);
+                  Car::where("goods_id",$goods_id)->update(["price"=>$count,"time"=>time()]);
               }
         }else{
                $add = $car->insert($data);
